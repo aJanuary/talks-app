@@ -1,6 +1,8 @@
 require 'sinatra/base'
 
 class TalksApp < Sinatra::Base
+  set :public_folder, File.dirname(__FILE__) + '/public'
+
   before do
     # Only get the library once, at the begining of the request.
     # If we call settings.library_store.library multiple times in a request,
@@ -9,7 +11,7 @@ class TalksApp < Sinatra::Base
   end
 
   get '/' do
-    @library.map {|t| t.title}
+    erb :index
   end
 end
 

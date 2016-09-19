@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Talks app</title>
+  </head>
+  <body>
+    <% for @talk in @library %>
+      <article>
+	<h1><%= @talk.title %></h1>
+	<p><%= @talk.date %>
+      </article>
+    <% end %>
+  </body>
+</html>
