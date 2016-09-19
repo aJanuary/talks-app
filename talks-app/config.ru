@@ -19,6 +19,7 @@ library_provider = S3LibraryProvider.new(
 
 interval = config['caching']['interval']
 library_provider = CachingLibraryProvider.new(library_provider, interval)
+library_provider.start
 
 TalksApp.set :library_provider, library_provider
 

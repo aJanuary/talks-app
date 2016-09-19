@@ -5,9 +5,15 @@ class CachingLibraryProvider
     @library_provider = library_provider
 
     @library = Concurrent::AtomicReference.new
-    Concurrent::TimerTask.new(execution_interval: interval) do |task|
+    @timer = Concurrent::TimerTask.new(
+      execution_interval: interval, run_now: true
+    ) do |task|
       @library.set(@library_provider.library)
-    end.execute
+    end
+  end
+
+  def start
+    @timer.execute
   end
 
   def library
