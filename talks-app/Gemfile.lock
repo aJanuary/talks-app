@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     blankslate (2.1.2.4)
+    dotenv (2.1.1)
     parslet (1.5.0)
       blankslate (~> 2.0)
     proxies (0.2.1)
@@ -22,6 +23,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv (~> 2.1, >= 2.1.1)
   s3 (~> 0.3.24)
   sinatra (~> 1.4, >= 1.4.7)
   toml (~> 0.1.2)
