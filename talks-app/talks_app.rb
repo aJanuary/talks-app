@@ -8,6 +8,8 @@ class TalksApp < Sinatra::Base
     # If we call settings.library_store.library multiple times in a request,
     # it might return different values because a fetch happened in-between.
     @library = settings.library_provider.library
+
+    halt 503, 'Waiting for library data' if @library.nil?
   end
 
   get '/' do
