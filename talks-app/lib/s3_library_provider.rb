@@ -1,6 +1,6 @@
 require 's3'
 require 'toml'
-require_relative '../library/talk'
+require 'library/talk'
 
 class S3LibraryProvider
   def initialize(access_key_id, secret_access_key, bucket_name)
@@ -13,7 +13,7 @@ class S3LibraryProvider
     "#<S3LibraryProvider:#{object_id}>"
   end
 
-  def get_library
+  def library
     service = S3::Service.new(
       access_key_id: @access_key_id,
       secret_access_key: @secret_access_key

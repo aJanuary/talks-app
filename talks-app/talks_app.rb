@@ -1,8 +1,15 @@
 require 'sinatra/base'
 
 class TalksApp < Sinatra::Base
+  before do
+    # Only get the library once, at the begining of the request.
+    # If we call settings.library_store.library multiple times in a request,
+    # it might return different values because a fetch happened in-between.
+    @library = settings.library_provider.library
+  end
+
   get '/' do
-    settings.library_provider.get_library.map {|t| t.title}
+    @library.map {|t| t.title}
   end
 end
 
