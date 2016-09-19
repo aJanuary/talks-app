@@ -1,3 +1,5 @@
 source "https://rubygems.org"
 
 gem 'sinatra', '~> 1.4', '>= 1.4.7'
+gem 's3', '~> 0.3.24'
+gem 'toml', '~> 0.1.2'
