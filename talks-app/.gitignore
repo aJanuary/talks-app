@@ -117,3 +117,4 @@ build-iPhoneSimulator/
 .rvmrc
 
 config.toml
+log/talks_app.log
