@@ -1,9 +1,11 @@
 <!doctype html>
 <html>
   <head>
-    <title>Talks app</title>
+    <title><%= @config.title %></title>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
+    <h1><%= @config.title %></h1>
     <% for @talk in @library %>
       <article>
 	<h1><%= @talk.title %></h1>

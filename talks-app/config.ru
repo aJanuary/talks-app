@@ -22,6 +22,7 @@ library_provider = CachingLibraryProvider.new(library_provider, interval)
 library_provider.start
 
 TalksApp.set :library_provider, library_provider
+TalksApp.set :config, config['web']
 
 run TalksApp
 

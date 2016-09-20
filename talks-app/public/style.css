@@ -1,0 +1,64 @@
+body {
+  max-width: 50em;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+
+.pagination {
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li {
+  display: inline-block;
+  padding: 0.5em;
+}
+
+.pagination li:first-child {
+  padding-left: 0;
+}
+
+.pagination li:last-child {
+  padding-right: 0;
+}
+
+.pagination .selected {
+  color: red;
+}
+
+article + article {
+  margin-top: 3em;
+}
+
+h2 {
+  margin-bottom: 0;
+}
+
+h2 a {
+  color: black;
+}
+
+.info {
+  margin-top: 0;
+}
+
+h3 {
+  margin-bottom: 0;
+}
+
+.files {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sections {
+  list-style: none;
+  padding-left: 0.5em;
+  margin: 0;
+}
+
+.sections > li {
+  border-left: solid 1px black;
+  padding-left: 0.5em;
+}

@@ -4,3 +4,6 @@ bucket_name = "talks-app"
 [caching]
 interval = 10
 
+[web]
+title = "Talks"
+
