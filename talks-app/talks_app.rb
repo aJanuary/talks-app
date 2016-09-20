@@ -24,12 +24,15 @@ class TalksApp < Sinatra::Base
 
   get '/talk/:talk_id' do |talk_id|
     talk = @library[talk_id]
+    halt 404 if talk.nil?
     erb :talk, :locals => { :talk => talk, :is_section => false }
   end
 
   get '/talk/:talk_id/files/:file_name' do |talk_id, file_name|
     talk = @library[talk_id]
+    halt 404 if talk.nil?
     file = talk.file(file_name)
+    halt 404 if file.nil?
     redirect file.get_download_url
   end
 
@@ -39,6 +42,7 @@ private
     start_idx = (page - 1) * @config.page_size
     end_idx = start_idx + @config.page_size - 1
     talks = @library.values[start_idx..end_idx]
+    halt 404 if talks.nil?
     
     erb :index, :locals => {
       :page => page,
