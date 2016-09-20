@@ -1,7 +1,7 @@
 <article>
   <h2>
     <% if not is_section %>
-      <a href="talk/<%= talk.id %>">
+      <a href="/talk/<%= talk.id %>">
     <% end %>
     <%= talk.title %>
     <% if not is_section %>
@@ -30,7 +30,7 @@
     <ul class="files">
       <% for @file in talk.files %>
 	<li>
-	  <a href="talk/<%= talk.id %>/files/<%= @file.name %>">
+	  <a href="/talk/<%= talk.id %>/files/<%= @file.name %>">
 	    <%= @file.name %>
 	  </a>
 	</li>
