@@ -67,6 +67,24 @@ h3 {
   margin: 0;
 }
 
+.files a {
+  padding-left: 20px;
+  background-repeat: no-repeat;
+  background-image: url(file.png);
+}
+
+.files a.video {
+  background-image: url(video.png);
+}
+
+.files a.slides {
+  background-image: url(slides.png);
+}
+
+.files a.audio {
+  background-image: url(audio.png);
+}
+
 .sections {
   list-style: none;
   padding-left: 0.5em;

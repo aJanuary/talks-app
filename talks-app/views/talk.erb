@@ -28,10 +28,11 @@
   <% if not talk.files.empty? %>
     <h3>Files</h3>
     <ul class="files">
-      <% for @file in talk.files.values %>
+      <% for file in talk.files.values %>
 	<li>
-	  <a href="/talk/<%= talk.id %>/files/<%= @file.name %>">
-	    <%= @file.name %>
+	  <a href="/talk/<%= talk.id %>/files/<%= file.name %>"
+	      class="<%= file.type %>">
+	    <%= file.name %>
 	  </a>
 	</li>
       <% end %>

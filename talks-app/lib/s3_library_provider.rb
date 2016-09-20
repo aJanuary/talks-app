@@ -7,11 +7,12 @@ class S3File < Library::File
   def initialize(
     talk_id,
     name,
+    type,
     access_key_id,
     secret_access_key,
     bucket_name
   )
-    super(name)
+    super(name, type)
 
     @talk_id = talk_id
     @access_key_id = access_key_id
@@ -71,6 +72,7 @@ private
       S3File.new(
 	talk_id,
 	file['name'],
+	file['type'],
 	@access_key_id,
 	@secret_access_key,
 	@bucket_name
