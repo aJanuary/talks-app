@@ -22,5 +22,11 @@ class TalksApp < Sinatra::Base
     talk = @library[talk_id]
     erb :talk, :locals => { :talk => talk, :is_section => false }
   end
+
+  get '/talk/:talk_id/files/:file_name' do |talk_id, file_name|
+    talk = @library[talk_id]
+    file = talk.file(file_name)
+    redirect file.get_download_url
+  end
 end
 
