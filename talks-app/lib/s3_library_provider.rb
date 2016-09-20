@@ -62,7 +62,7 @@ class S3LibraryProvider
 	talks << parse_talk(talk_id, parsed)
       end
     end
-    Hash[talks.sort_by {|talk| talk.date}.map {|talk| [talk.id, talk]}]
+    Hash[talks.sort_by {|talk| talk.date}.reverse.map {|talk| [talk.id, talk]}]
   end
 
 private
