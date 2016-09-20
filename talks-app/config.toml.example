@@ -6,4 +6,5 @@ interval = 10
 
 [web]
 title = "Talks"
-
+page_size = 10
+max_pages = 10

@@ -1,3 +1,8 @@
+<%= erb(:pagination, :layout => false, :locals => {
+  :page => page,
+  :num_pages => num_pages
+}) %>
+
 <% for talk in talks %>
   <%= erb(:talk, :layout => false, :locals => {
     :talk => talk,
@@ -5,3 +10,7 @@
   }) %> 
 <% end %>
 
+<%= erb(:pagination, :layout => false, :locals => {
+  :page => page,
+  :num_pages => num_pages
+}) %>

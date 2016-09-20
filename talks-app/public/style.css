@@ -14,9 +14,15 @@ h1 a {
   padding: 0;
 }
 
+.pagination a:visited {
+  color: blue;
+}
+
 .pagination li {
   display: inline-block;
   padding: 0.5em;
+  min-width: 1.1em;
+  text-align: center;
 }
 
 .pagination li:first-child {
@@ -28,6 +34,10 @@ h1 a {
 }
 
 .pagination .selected {
+  color: red;
+}
+
+.pagination .selected:visited {
   color: red;
 }
 

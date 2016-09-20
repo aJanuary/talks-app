@@ -40,7 +40,6 @@
   <% if not talk.sections.empty? %>
     <h3>Sections</h3>
     <ul class="sections">
-    <%= puts talk.sections %>
       <% for @section in talk.sections %>
 	<li>
 	  <%= erb(:talk, :layout => false, :locals => {

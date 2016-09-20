@@ -15,7 +15,11 @@ class TalksApp < Sinatra::Base
   end
 
   get '/' do
-    erb :index, :locals => { :talks => @library.values }
+    handle_page(1)
+  end
+
+  get '/:page' do |page|
+    handle_page(page.to_i)
   end
 
   get '/talk/:talk_id' do |talk_id|
@@ -27,6 +31,20 @@ class TalksApp < Sinatra::Base
     talk = @library[talk_id]
     file = talk.file(file_name)
     redirect file.get_download_url
+  end
+
+private
+  def handle_page(page)
+    num_talks = @library.values.size
+    start_idx = (page - 1) * @config.page_size
+    end_idx = start_idx + @config.page_size - 1
+    talks = @library.values[start_idx..end_idx]
+    
+    erb :index, :locals => {
+      :page => page,
+      :num_pages => (num_talks / @config.page_size.to_f).ceil,
+      :talks => talks
+    }
   end
 end
 
