@@ -38,6 +38,7 @@ class TalksApp < Sinatra::Base
 
 private
   def handle_page(page)
+    halt 404 if page < 1
     num_talks = @library.values.size
     start_idx = (page - 1) * @config.page_size
     end_idx = start_idx + @config.page_size - 1
