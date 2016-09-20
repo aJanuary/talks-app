@@ -28,8 +28,6 @@ class S3LibraryProvider
       if file == 'talk.toml'
 	content = object.content
 	parsed = TOML::Parser.new(content).parsed
-
-	@logger.info parsed if @logger
 	talks << parse_talk(talk_id, parsed)
       end
     end
@@ -43,7 +41,7 @@ private
     end
 
     sections = (data['section'] || []).map do |section|
-      parse_talk(nil, section)
+      parse_talk(talk_id, section)
     end
 
     Library::Talk.new(
