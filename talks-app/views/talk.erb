@@ -1,0 +1,41 @@
+<h2><%= talk.title %></h2>
+<% if talk.presenter || talk.date %>
+  <p class="info">
+    presented
+    <% if talk.date %>
+      <time="<%= talk.date %>">
+	on <%= talk.date.strftime('%Y-%m-%d') %>
+	at <%= talk.date.strftime('%H:%M') %>
+      </time>
+    <% end %>
+    <% if talk.presenter %>
+      by <span class="presenter"><%= talk.presenter %>
+    <% end %>
+  </p>
+<% end %>
+<% if talk.description %>
+  <p><%= talk.description %></p>
+<% end %>
+<% if not talk.files.empty? %>
+  <h3>Files</h3>
+  <ul class="files">
+    <% for @file in talk.files %>
+      <li>
+	<a href="talk/<%= talk.id %>/files/<%= @file.name %>">
+	  <%= @file.name %>
+	</a>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+<% if not talk.sections.empty? %>
+  <h3>Sections</h3>
+  <ul class="sections">
+  <%= puts talk.sections %>
+    <% for @section in talk.sections %>
+      <li>
+	<%= erb(:talk, :layout => false, :locals => { :talk => @section }) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

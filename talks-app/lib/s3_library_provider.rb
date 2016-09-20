@@ -29,21 +29,32 @@ class S3LibraryProvider
 	content = object.content
 	parsed = TOML::Parser.new(content).parsed
 
-	files = (parsed['files'] || []).map do |file|
-	  Library::File.new(file['name'])
-	end
-
-	talks << Library::Talk.new(
-	  talk_id,
-	  parsed['title'],
-	  parsed['date'],
-	  parsed['presenter'],
-	  parsed['description'],
-	  files
-	)
+	@logger.info parsed if @logger
+	talks << parse_talk(talk_id, parsed)
       end
     end
     talks.sort_by {|talk| talk.date}
+  end
+
+private
+  def parse_talk(talk_id, data)
+    files = (data['files'] || []).map do |file|
+      Library::File.new(file['name'])
+    end
+
+    sections = (data['section'] || []).map do |section|
+      parse_talk(nil, section)
+    end
+
+    Library::Talk.new(
+      talk_id,
+      data['title'],
+      data['date'],
+      data['presenter'],
+      data['description'],
+      files,
+      sections
+    )
   end
 end
 
