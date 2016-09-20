@@ -28,7 +28,14 @@ class S3LibraryProvider
 	content = object.content
 	parsed = TOML::Parser.new(content).parsed
 
-	talks << Talk.new(parsed['title'], parsed['date'])
+	talks << Talk.new(
+	  talk_id,
+	  parsed['title'],
+	  parsed['date'],
+	  parsed['presenter'],
+	  parsed['description'],
+	  []
+	)
       end
     end
     talks.sort_by {|talk| talk.date}
