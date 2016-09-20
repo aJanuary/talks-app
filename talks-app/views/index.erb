@@ -1,18 +1,7 @@
-<!doctype html>
-<html>
-  <head>
-    <title><%= @config.title %></title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-    <h1><%= @config.title %></h1>
-    <% for @talk in @library %>
-      <article>
-	<%= erb(:talk, :layout => false, :locals => {
-	  :talk => @talk,
-	  :is_section => false
-	}) %> 
-      </article>
-    <% end %>
-  </body>
-</html>
+<% for talk in talks %>
+  <%= erb(:talk, :layout => false, :locals => {
+    :talk => talk,
+    :is_section => false
+  }) %> 
+<% end %>
+

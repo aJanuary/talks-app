@@ -4,6 +4,11 @@ body {
   font-family: sans-serif;
 }
 
+h1 a {
+  color: black;
+  text-decoration: none;
+}
+
 .pagination {
   list-style: none;
   padding: 0;

@@ -15,7 +15,12 @@ class TalksApp < Sinatra::Base
   end
 
   get '/' do
-    erb :index
+    erb :index, :locals => { :talks => @library.values }
+  end
+
+  get '/talk/:talk_id' do |talk_id|
+    talk = @library[talk_id]
+    erb :talk, :locals => { :talk => talk, :is_section => false }
   end
 end
 
