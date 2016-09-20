@@ -8,7 +8,10 @@
     <h1><%= @config.title %></h1>
     <% for @talk in @library %>
       <article>
-	<%= erb(:talk, :layout => false, :locals => { :talk => @talk }) %> 
+	<%= erb(:talk, :layout => false, :locals => {
+	  :talk => @talk,
+	  :is_section => false
+	}) %> 
       </article>
     <% end %>
   </body>

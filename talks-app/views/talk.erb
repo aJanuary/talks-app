@@ -1,4 +1,12 @@
-<h2><%= talk.title %></h2>
+<h2>
+  <% if not is_section %>
+    <a href="talk/<%= talk.id %>">
+  <% end %>
+  <%= talk.title %>
+  <% if not is_section %>
+    </a>
+  <% end %>
+</h2>
 <% if talk.presenter || talk.date %>
   <p class="info">
     presented
@@ -34,7 +42,10 @@
   <%= puts talk.sections %>
     <% for @section in talk.sections %>
       <li>
-	<%= erb(:talk, :layout => false, :locals => { :talk => @section }) %>
+	<%= erb(:talk, :layout => false, :locals => {
+	  :talk => @section,
+	  :is_section => true
+	}) %>
       </li>
     <% end %>
   </ul>
