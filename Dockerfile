@@ -25,6 +25,6 @@ ENV PATH /opt/rubies/ruby-2.0.0-p247/bin:$PATH
 WORKDIR /opt/talks-app
 RUN bundle install --path vendor/bundle
 
-EXPOSE 327689292
+EXPOSE 9292
 ENTRYPOINT bundle exec rackup -o 0.0.0.0
 
