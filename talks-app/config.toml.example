@@ -1,10 +1,10 @@
 [s3]
-bucket_name = "talks-app"
+bucket_name = "talks-app"    # Name of the S3 bucket
 
 [caching]
-interval = 10
+interval = 3600              # How often, in seconds, it should re-read the talk.toml files from S3
 
 [web]
-title = "Talks"
-page_size = 10
-max_pages = 10
+title = "Talks"              # The title to use for the web-page
+page_size = 10               # How many items to show on a page
+max_pages = 10               # How many pages to display before adding "1 ..." and "... n"
