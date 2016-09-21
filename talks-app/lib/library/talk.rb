@@ -15,8 +15,8 @@ module Library
     def file(file_name)
       return @files[file_name] if @files[file_name]
       @sections.each do |section|
-	section_file = section.file(file_name)
-	return section_file if section_file
+        section_file = section.file(file_name)
+        return section_file if section_file
       end
       nil
     end

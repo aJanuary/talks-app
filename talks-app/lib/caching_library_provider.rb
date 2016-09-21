@@ -9,10 +9,10 @@ class CachingLibraryProvider
       execution_interval: interval, run_now: true
     ) do |task|
       begin
-	logger.info('updating library cache') if logger
-	@library.set(@library_provider.library)
+        logger.info('updating library cache') if logger
+        @library.set(@library_provider.library)
       rescue Exception => e
-	logger.error(e) if logger
+        logger.error(e) if logger
       end
     end
   end
@@ -25,4 +25,3 @@ class CachingLibraryProvider
     @library.get
   end
 end
-

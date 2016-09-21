@@ -33,7 +33,7 @@
     <% for page_link in (start_idx..end_idx) %>
       <% class_name = (page_link == page) ? 'selected' : '' %>
       <li><a href="/<%= page_link %>" class="<%= class_name %>">
-	<%= page_link %>
+        <%= page_link %>
       </a></li>
     <% end %>
 

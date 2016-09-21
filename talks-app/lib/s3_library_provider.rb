@@ -17,7 +17,7 @@ class S3File < Library::File
     @talk_id = talk_id
     @access_key_id = access_key_id
     @secret_access_key = secret_access_key
-    @bucket_name = bucket_name
+   @bucket_name = bucket_name
   end
 
   def inspect
@@ -58,9 +58,9 @@ class S3LibraryProvider
     bucket.objects.each do |object|
       (talk_id, file) = object.key.split('/', 2)
       if file == 'talk.toml'
-	content = object.content
-	parsed = TOML::Parser.new(content).parsed
-	talks << parse_talk(talk_id, parsed)
+        content = object.content
+        parsed = TOML::Parser.new(content).parsed
+        talks << parse_talk(talk_id, parsed)
       end
     end
     Hash[talks.sort_by {|talk| talk.date}.reverse.map {|talk| [talk.id, talk]}]
@@ -70,12 +70,12 @@ private
   def parse_talk(talk_id, data)
     files = Hash[(data['files'] || []).map do |file|
       S3File.new(
-	talk_id,
-	file['name'],
-	file['type'],
-	@access_key_id,
-	@secret_access_key,
-	@bucket_name
+        talk_id,
+        file['name'],
+        file['type'],
+        @access_key_id,
+        @secret_access_key,
+        @bucket_name
       )
     end.map {|file| [file.name, file]}]
 
@@ -94,4 +94,3 @@ private
     )
   end
 end
-
