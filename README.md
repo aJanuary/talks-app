@@ -50,7 +50,7 @@ For them to be presented, they must be listed in the `talk.toml` file.
 title = "Jack and Jill - A tale"                                    # Title of the talk. Required
 date = 2016-01-01T15:30:00Z                                         # Date of the talk, in the form yyyy-mm-ddThh:mm:ssZ. Optional
 presenter = "Jack and Jill"                                         # Presenter(s) of the talk. Optional
-description = "They describe their adventures going up the hill"    # Description of the talk. Optional
+description = "They describe their adventures going up the hill"    # Description of the talk. Renders using markdown. Optional
 
     # Files associated with the whole talk. Can have zero or more, by repeating the block below
     [[files]]
