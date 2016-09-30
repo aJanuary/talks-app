@@ -6,5 +6,6 @@ interval = 3600              # How often, in seconds, it should re-read the talk
 
 [web]
 title = "Talks"              # The title to use for the web-page
+description = "Some talks"   # A markdown description to render under the title
 page_size = 10               # How many items to show on a page
 max_pages = 10               # How many pages to display before adding "1 ..." and "... n"

@@ -1,6 +1,8 @@
 require 'sinatra/base'
+require 'glorify'
 
 class TalksApp < Sinatra::Base
+  register Sinatra::Glorify
   set :public_folder, File.dirname(__FILE__) + '/public'
 
   before do
