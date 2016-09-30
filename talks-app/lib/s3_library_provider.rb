@@ -2,6 +2,7 @@ require 's3'
 require 'toml'
 require 'library/talk'
 require 'library/file'
+require 'library/embedded_file'
 
 class S3File < Library::File
   def initialize(
@@ -17,7 +18,7 @@ class S3File < Library::File
     @talk_id = talk_id
     @access_key_id = access_key_id
     @secret_access_key = secret_access_key
-   @bucket_name = bucket_name
+    @bucket_name = bucket_name
   end
 
   def inspect
@@ -67,17 +68,27 @@ class S3LibraryProvider
   end
 
 private
+  def parse_file(talk_id, file)
+    S3File.new(
+      talk_id,
+      file['name'],
+      file['type'],
+      @access_key_id,
+      @secret_access_key,
+      @bucket_name
+    )
+  end
+
   def parse_talk(talk_id, data)
     files = Hash[(data['files'] || []).map do |file|
-      S3File.new(
-        talk_id,
-        file['name'],
-        file['type'],
-        @access_key_id,
-        @secret_access_key,
-        @bucket_name
-      )
+      parse_file(talk_id, file)
     end.map {|file| [file.name, file]}]
+
+    embedded_files = Hash[(data['embed'] || []).map do |embedded|
+      file = parse_file(talk_id, embedded)
+      aspect_ratio = embedded['aspect_ratio'].split(':').map {|x| x.to_i}
+      Library::EmbeddedFile.new(file, aspect_ratio)
+    end.map {|embedded_file| [embedded_file.file.name, embedded_file]}]
 
     sections = (data['section'] || []).map do |section|
       parse_talk(talk_id, section)
@@ -89,6 +100,7 @@ private
       data['date'],
       data['presenter'],
       data['description'],
+      embedded_files,
       files,
       sections
     )

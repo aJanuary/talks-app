@@ -7,5 +7,19 @@
   <body>
     <h1><a href="/"><%= @config.title %></a></h1>
     <%= yield %>
+    <script>
+      function playVideo(e) {
+	e.target.removeEventListener('click', playVideo);
+	e.target.play();
+      }
+
+      // Only add click to play if it's not already defined (as it is on Firefox)
+      if (typeof InstallTrigger === 'undefined') {
+	var videoElms = document.getElementsByTagName('video');
+	for (var i = 0; i < videoElms.length; i++) {
+	  videoElms[i].addEventListener('click', playVideo);
+	}
+      }
+    </script>
   </body>
 </html>

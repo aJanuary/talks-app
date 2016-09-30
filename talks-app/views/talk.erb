@@ -12,10 +12,10 @@
     <p class="info">
       presented
       <% if talk.date %>
-	<time="<%= talk.date %>">
-	  on <%= talk.date.strftime('%Y-%m-%d') %>
-	  at <%= talk.date.strftime('%H:%M') %>
-	</time>
+        <time="<%= talk.date %>">
+          on <%= talk.date.strftime('%Y-%m-%d') %>
+          at <%= talk.date.strftime('%H:%M') %>
+        </time>
       <% end %>
       <% if talk.presenter %>
         by <span class="presenter"><%= talk.presenter %>
@@ -25,6 +25,17 @@
   <% if talk.description %>
     <p><%= glorify talk.description %></p>
   <% end %>
+  <% if not talk.embedded_files.empty? %>
+  <% end %>
+    <% for embedded_file in talk.embedded_files.values %>
+      <video controls preload=none
+        poster="/video_poster.png"
+        width=<%= embedded_file.width(@config.max_embed_width) %>
+        height=<%= embedded_file.height(@config.max_embed_width) %>
+        src="/talk/<%= talk.id %>/embedded/<%= embedded_file.file.name %>"
+      >
+  </video>
+    <% end %>
   <% if not talk.files.empty? %>
     <h3>Files</h3>
     <ul class="files">

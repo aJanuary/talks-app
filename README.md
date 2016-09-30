@@ -52,19 +52,31 @@ date = 2016-01-01T15:30:00Z                                         # Date of th
 presenter = "Jack and Jill"                                         # Presenter(s) of the talk. Optional
 description = "They describe their adventures going up the hill"    # Description of the talk. Renders using markdown. Optional
 
+    # Can embed videos for the whole talk. Can have zero or more, by repeating the block below
+    [[embed]]
+    name = "jack-and-jill.mp4"                                      # Name of the file. Must be in the same directory. Required
+    type = "video"                                                  # Type of the file. Currently only "video" supported. Required
+    aspect_ratio = "16:9"                                           # Aspect ratio, of the form "w:h". Required
+
     # Files associated with the whole talk. Can have zero or more, by repeating the block below
     [[files]]
     name = "jack-and-jill.mp4"                                      # Name of the file. Must be in the same directory. Required    
     type = "video"                                                  # Type of the file. Can be anything, but "video", "audio" and "slides" have their own icon. Required
 
     
-    # A talk can be broken down into sections. Can have 0 or more sections, by repeating the block below
+    # A talk can be broken down into sections. Can have zero or more sections, by repeating the block below
     [[section]]
     title = "Tumbling"                                              # The title of the section. Required
     presenter = "Jack"                                              # Presenter(s) of the section. Optional
     description = "Why Jack went tumbling after"                    # Description of the section. Optional
 
-        # Files associated with the section. Can have 0 or more files, by repeating the block below
+        # Embeded files associated with the section. Can have zero or more, by repeating the block below
+        [[embed]]
+        name = "jack.mp4"                                           # Name of the file. Must be in the same directory. Required
+        type = "video"                                              # Type of the file. Currently only "video" supported. Required
+        aspect_ratio = "16:9"                                       # Aspect ratio, of the form "w:h". Required
+
+        # Files associated with the section. Can have zero or more files, by repeating the block below
         [[section.files]]
         name = "jack.pdf"                                           # Name of the file. Must be in the same directory. Required
         type = "slides"                                             # Type of the file. Can be anything, but "video", "audio" and "slides" have their own icon. Required

@@ -38,6 +38,13 @@ class TalksApp < Sinatra::Base
     redirect file.get_download_url
   end
 
+  get '/talk/:talk_id/embedded/:file_name' do |talk_id, file_name|
+    talk = @library[talk_id]
+    halt 404 if talk.nil?
+    file = talk.embedded_file(file_name)
+    halt 404 if file.nil?
+    redirect file.get_download_url
+  end
 private
   def handle_page(page)
     halt 404 if page < 1
